@@ -1,0 +1,30 @@
+name: Cron Example
+
+on:
+  workflow_dispatch
+
+jobs:
+  run-integration-test:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./cron-example
+
+    steps:
+      - name: Checkout repo 
+        uses: actions/checkout@v2
+
+      - name: Setup node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+
+      - name: Install Yarn
+        run: npm install --frozen-lockefile
+
+      - name: Run tests
+        run: yarn tests
+      
+
+  
