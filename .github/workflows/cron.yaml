@@ -1,7 +1,9 @@
 name: Cron Example
 
 on:
-  workflow_dispatch
+  schedule:
+    - cron: "* * * * *"
+  workflow_dispatch:
 
 jobs:
   run-integration-test:
